@@ -32,13 +32,17 @@ cycle = 0
 s = 0
 f = 240
 
-while f <= len(tuple_nauty):
+while f - 240 <= len(tuple_nauty) + 1:
     for graph_tuple in tuple_nauty[s:f]:
         new_energy = laplacian_energy(graph_tuple[1].spectrum(laplacian=True), n, m)
         new_index = graph_tuple[0]
         if new_energy < energy:
             energy = new_energy
             index = new_index
+            filename = 'graph_partial_' + str(n) + '.png'
+            graphs_nauty[index].plot().save(filename)
+            with open('energy.txt', 'w') as graph_info:
+                graph_info.write(str(round(energy, 5)))
     s += 240
     f += 240
     cycle += 1
