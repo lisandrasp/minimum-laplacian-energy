@@ -3,13 +3,14 @@
 from sage.all import *
 
 import time
+import os
 
 start = time.time()
 
 n, m = 12, 12
 parameters = str(n) + " -c " + str(m) + ":" + str(m)
 graphs_nauty = list(graphs.nauty_geng(parameters))
-print('Nauty list size', len(graphs_nauty))
+print(f'Nauty list size {len(graphs_nauty)} Cycles {len(graphs_nauty) // 240}')
 
 list_nauty = list()
 
@@ -52,5 +53,9 @@ finish = time.time()
 
 filename = 'graph_' + str(n) + '.png'
 graphs_nauty[index].plot().save(filename)
+
+if os.path.exists(str('graph_' + str(n) + '.png')):
+    os.remove(str('graph_partial_' + str(n) + '.png'))
+
 print('Minimum Laplacian energy', round(energy, 5))
 print(f'Execution time {round(finish - start, 2)} s')
