@@ -3,6 +3,7 @@
 from sage.all import *
 
 n, m = 20, 20
+c = 4
 
 
 def laplacian_energy(spectrum, n, m):
@@ -12,13 +13,10 @@ def laplacian_energy(spectrum, n, m):
     return sum
 
 
-cycle = graphs.CycleGraph(4)
-path = graphs.PathGraph(n - 4 + 1)
-tadpole = cycle.disjoint_union(path)
-tadpole.merge_vertices([(0, 0), (1, 0)])
+tadpole = graphs.TadpoleGraph(c, n - c)
 tadpole.plot().save('tadpole_' + str(n) + '.png')
 print(f'Tadpole Laplacian energy {round(laplacian_energy(tadpole.spectrum(laplacian=True), n, m), 5)}')
 
-cycle_graph = graphs.CycleGraph(n)
-cycle_graph.plot().save('cycle_' + str(n) + '.png')
-print(f'Cycle Laplacian energy {round(laplacian_energy(cycle_graph.spectrum(laplacian=True), n, m), 5)}')
+cycle = graphs.CycleGraph(n)
+cycle.plot().save('cycle_' + str(n) + '.png')
+print(f'Cycle Laplacian energy {round(laplacian_energy(cycle.spectrum(laplacian=True), n, m), 5)}')
