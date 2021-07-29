@@ -40,8 +40,7 @@ while f - 240 <= len(tuple_nauty) + 1:
         if new_energy < energy:
             energy = new_energy
             index = new_index
-            filename = 'graph_partial_' + str(n) + '.png'
-            graphs_nauty[index].plot().save(filename)
+            graphs_nauty[index].plot().save(str('graph_partial_' + str(n) + '.png'))
             with open('energy.txt', 'w') as graph_info:
                 graph_info.write(str(round(energy, 5)))
     s += 240
@@ -57,5 +56,5 @@ graphs_nauty[index].plot().save(filename)
 if os.path.exists(str('graph_' + str(n) + '.png')):
     os.remove(str('graph_partial_' + str(n) + '.png'))
 
-print('Minimum Laplacian energy', round(energy, 5))
+print(f'Minimum Laplacian energy {round(energy, 5)}')
 print(f'Execution time {round(finish - start, 2)} s')
