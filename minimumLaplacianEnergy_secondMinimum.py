@@ -25,14 +25,14 @@ energy = [laplacian_energy(graph.spectrum(laplacian=True), n, m) for graph in gr
 finish = time.time()
 
 index = energy.index(min(energy))
-filename1 = 'graph_01_' + str(n) + '.png'
+filename1 = 'graph_' + str(n) + '_01.png'
 graphs_nauty[index].plot().save(filename1)
 print(f'Minimum Laplacian energy {round(min(energy), 5)}')
 
 del energy[index]
 
 new_index = energy.index(min(energy))
-filename2 = 'graph_02_' + str(n) + '.png'
+filename2 = 'graph_' + str(n) + '_02.png'
 graphs_nauty[new_index].plot().save(filename2)
-print(f'Second minimum Laplacian energy {round(min(energy), 5)}', '\n')
+print(f'Second minimum Laplacian energy {round(min(energy), 5)}')
 print(f'Execution time {round(finish - start, 2)} s')

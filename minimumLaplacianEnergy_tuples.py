@@ -50,8 +50,7 @@ while f - 240 <= len(tuple_nauty) + 1:
 
 finish = time.time()
 
-filename = 'graph_' + str(n) + '.png'
-graphs_nauty[index].plot().save(filename)
+graphs_nauty[index].plot().save(str('graph_' + str(n) + '.png'))
 
 if os.path.exists(str('graph_' + str(n) + '.png')):
     os.remove(str('graph_partial_' + str(n) + '.png'))

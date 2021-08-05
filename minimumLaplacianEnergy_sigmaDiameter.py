@@ -60,13 +60,7 @@ while f - 240 <= len(tuple_nauty) + 1:
 degree = graph_tuple[1].average_degree()
 sigma = len([mi for mi in spectrum if mi >= degree])
 
-# Diameter is the "longest shortest path" between two vertices in a graph
-distance_all = graph_tuple[1].distance_all_pairs()
-distance_set = set()
-for dictionary in distance_all:
-    for distance in distance_all[dictionary].values():
-        distance_set.add(distance)
-diameter = max(distance_set)
+diameter = graph_tuple[1].diameter()
 
 finish = time.time()
 
