@@ -8,8 +8,8 @@ c = 4
 
 def laplacian_energy(spectrum, n, m):
     sum = 0
-    for mi in spectrum:
-        sum += abs(mi - 2 * m / n)
+    for mu in spectrum:
+        sum += abs(mu - 2 * m / n)
     return sum
 
 
