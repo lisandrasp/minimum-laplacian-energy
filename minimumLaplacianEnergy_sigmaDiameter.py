@@ -58,7 +58,7 @@ while f - 240 <= len(tuple_nauty) + 1:
 
 # Sigma is number of laplacian eigenvalues greater or equal to the average degree
 degree = graph_tuple[1].average_degree()
-sigma = len([mi for mi in spectrum if mi >= degree])
+sigma = len([mu for mu in spectrum if mu >= degree])
 
 diameter = graph_tuple[1].diameter()
 
